@@ -19,12 +19,12 @@ export class MessageRepository {
 
   async findAll() {
     const contents = await readFile('messages.json', 'utf-8');
-    const messages = JSON.parse(contents);
+    const messages = await JSON.parse(contents);
 
     return messages;
   }
 
-  async findOne(id: string) {
+  async findOne(id: number) {
     const contents = await readFile('messages.json', 'utf-8');
     const messages = JSON.parse(contents);
 
