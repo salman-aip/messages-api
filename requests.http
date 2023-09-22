@@ -1,1 +1,16 @@
 GET http://localhost:4000/messages
+
+###
+POST http://localhost:4000/messages
+
+###
+GET http://localhost:4000/messages/3423
+
+###
+PUT http://localhost:4000/messages/267634
+
+###
+PATCH http://localhost:4000/messages/5645656354543
+
+###
+DELETE http://localhost:4000/messages/1
