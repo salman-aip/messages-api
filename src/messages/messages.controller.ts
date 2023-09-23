@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  NotFoundException,
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
 import { CreateMessageDto } from './dto/create-message.dto';
@@ -26,8 +27,14 @@ export class MessagesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.messagesService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const message = await this.messagesService.findOne(+id);
+
+    if (!message) {
+      throw new NotFoundException('message not found');
+    }
+
+    return message;
   }
 
   @Patch(':id')
